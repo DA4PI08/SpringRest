@@ -11,7 +11,33 @@ spring:
     password:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: update
+    show-sql: true
+    generate-ddl: true
   h2:
     console:
       enabled: true
       path: /h2-console
+
+  data:
+    mongodb:
+      uri: localhost:27017/
+      username: root
+      password: root
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: group-1
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      group-id: group-1
+
+logging:
+  level:
+    org.springframework.data.jpa: DEBUG

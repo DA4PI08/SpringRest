@@ -5,6 +5,7 @@ import com.springrest.repository.TestRepo;
 import com.springrest.service.TestService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,5 +23,10 @@ public class TestServiceImpl implements TestService {
         if(testOptional.isPresent())
             return testOptional.get().toString();
         return "";
+    }
+
+    @Override
+    public List<TestModel> findAllTestModel() {
+        return testRepo.findAll();
     }
 }
